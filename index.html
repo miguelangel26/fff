@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="header-content">
+                <h1>ChatApp</h1>
+                <div class="search-container">
+                    <input type="text" placeholder="Buscar usuario...">
+                </div>
+            </div>
+        </header>
+        <nav>
+            <ul>
+                <li id="chatsTab" class="active">Chats</li>
+                <li id="contactsTab">Contactos</li>
+            </ul>
+        </nav>
+        <section id="chatsSection" class="chat-list">
+            <div class="chat-item" onclick="openChat('Whitmans Chat')">
+                <img src="https://via.placeholder.com/50" alt="Profile Image">
+                <div class="chat-info">
+                    <h3>Wilian</h3>
+                    <p>Ned: Yeah, I think I know what...</p>
+                </div>
+                <div class="chat-time">
+                    <span>11:45 AM</span>
+                    <span class="unread-count">3</span>
+                </div>
+            </div>
+            <div class="chat-item" onclick="openChat('Stewart Family')">
+                <img src="https://via.placeholder.com/50" alt="Profile Image">
+                <div class="chat-info">
+                    <h3>Stewart</h3>
+                    <p>Steve: Great, thanks!</p>
+                </div>
+                <div class="chat-time">
+                    <span>11:30 AM</span>
+                    <span class="unread-count">1</span>
+                </div>
+            </div>
+            <!-- Agrega más chats aquí -->
+        </section>
+        <section id="contactsSection" class="contacts-list" style="display: none;">
+            <div class="contact-item" onclick="openChat('Juan Perez')">
+                <img src="https://via.placeholder.com/50" alt="Profile Image">
+                <div class="contact-info">
+                    <h3>Juan Perez</h3>
+                    <p>Online</p>
+                </div>
+            </div>
+            <div class="contact-item" onclick="openChat('Maria Gomez')">
+                <img src="https://via.placeholder.com/50" alt="Profile Image">
+                <div class="contact-info">
+                    <h3>Maria Gomez</h3>
+                    <p>Last seen 2 hours ago</p>
+                </div>
+            </div>
+            <!-- Agrega más contactos aquí -->
+        </section>
+        <section id="chatWindow" class="chat-window" style="display: none;">
+            <div class="chat-header">
+                <button class="back-button" onclick="closeChat()">&#8592;</button>
+                <img src="https://via.placeholder.com/50" alt="Profile Image">
+                <div class="chat-header-info">
+                    <h3 id="chatTitle">Jhon Doe</h3>
+                </div>
+            </div>
+            <div class="chat-messages">
+                <div class="message sent">
+                    <p>Hola, ¿cómo estás?</p>
+                </div>
+                <div class="message received">
+                    <p>¡Hola! Estoy bien, gracias.</p>
+                </div>
+                <div class="message sent">
+                    <p>Me alegro de escucharlo.</p>
+                </div>
+                <div class="message received">
+                    <p>¿Y tú cómo estás?</p>
+                </div>
+            </div>
+            <div class="chat-input">
+                <input type="text" placeholder="Mensaje">
+                <button>Enviar</button>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.getElementById('chatsTab').addEventListener('click', function() {
+            document.getElementById('chatsSection').style.display = 'block';
+            document.getElementById('contactsSection').style.display = 'none';
+            document.getElementById('chatWindow').style.display = 'none';
+            document.getElementById('chatsTab').classList.add('active');
+            document.getElementById('contactsTab').classList.remove('active');
+        });
+
+        document.getElementById('contactsTab').addEventListener('click', function() {
+            document.getElementById('chatsSection').style.display = 'none';
+            document.getElementById('contactsSection').style.display = 'block';
+            document.getElementById('chatWindow').style.display = 'none';
+            document.getElementById('chatsTab').classList.remove('active');
+            document.getElementById('contactsTab').classList.add('active');
+        });
+
+        function openChat(chatName) {
+            document.getElementById('chatsSection').style.display = 'none';
+            document.getElementById('contactsSection').style.display = 'none';
+            document.getElementById('chatWindow').style.display = 'flex';
+            document.getElementById('chatTitle').innerText = chatName;
+        }
+
+        function closeChat() {
+            document.getElementById('chatWindow').style.display = 'none';
+            document.getElementById('chatsSection').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
+
+
+
